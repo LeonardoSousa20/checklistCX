@@ -501,7 +501,7 @@ function setValue() {
     sList = "";
     sCheck = "";
     sList = $(this).attr("id");
-    sCheck = this.checked ? "true" : "false";
+    sCheck = this.checked ? "1" : "0";
     localStorage.setItem(sList, sCheck);
   });
 }
