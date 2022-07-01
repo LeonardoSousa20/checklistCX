@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/d7c625f77e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <main>
+    <header>
+      <a href="index.html"><img src="img/logo.svg" alt=""></a>
+    </header>
+    <form class="form">
+      <div class="boxPontuacao">
+        <span>Pontuação Total: </span>
+        <span id="percentual">0%</span>
+      </div>
+      <div id="divCategoria" class="custom-checkbox form-item">
+        <div class="header-item" id="headerCategoria">
+          <span class="title">Categorias</span>
+          <span class="porcentual" id="porcenturalCategoria"><span id="valueCategoria">0 %</span> <i class="fa fa-light fa-arrow-down"></i></span>
+
+        </div>
+        <div id="categoriaItem" class="listItem"></div>
+      </div>
+
+      <div id="divProdutos" class="custom-checkbox form-item">
+        <div class="header-item" id="headerProduto">
+          <span class="title">Produtos</span>
+          <div class="porcentual" id="porcenturalProdutos"><span id="valueProduto">0 %</span> <i class="fa fa-light fa-arrow-down"></i></div>
+        </div>
+        <div id="produtoItem"></div>
+      </div>
+
+      <div id="divBanners" class="custom-checkbox form-item">
+        <div class="header-item" id="headerBanner">
+          <span class="title">Banners</span>
+          <div class="porcentual" id="porcenturalBanner"><span id="valueBanner">0 %</span> <i class="fa fa-light fa-arrow-down"></i></div>
+        </div>
+        <div id="bannerItem"></div>
+      </div>
+
+      <div id="divFrete" class="custom-checkbox form-item">
+        <div class="header-item" id="headerFrete">
+          <span class="title">Pagamentos e Frete</span>
+          <div class="porcentual" id="porcenturalFrete"><span id="valueFrete">0 %</span> <i class="fa fa-light fa-arrow-down"></i></div>
+        </div>
+        <div id="freteItem"></div>
+      </div>
+
+      <div id="divConfiabilidade" class="custom-checkbox form-item">
+        <div class="header-item" id="headerConfiabilidade">
+          <span class="title">Confiabilidade</span>
+          <div class="porcentual" id="porcenturalConfiabilidade"><span id="valueConfiabilidade">0 %</span> <i class="fa fa-light fa-arrow-down"></i></div>
+        </div>
+        <div id="confiabilidadeItem"></div>
+      </div>
+
+      <div id="divLayout" class="custom-checkbox form-item">
+        <div class="header-item" id="headerLayout">
+          <span class="title">Layout/Tema </span>
+          <div class="porcentual" id="porcenturalLayout"><span id="valueLayout">0 %</span> <i class="fa fa-light fa-arrow-down"></i></div>
+        </div>
+        <div id="layoutItem"></div>
+      </div>
+
+      <div id="divVendas" class="custom-checkbox form-item">
+        <div class="header-item" id="headerVendas">
+          <span class="title">Vendas</span>
+          <div class="porcentual" id="porcenturalVendas"><span id="valueVendas">0 %</span> <i class="fa fa-light fa-arrow-down"></i></div>
+        </div>
+        <div id="vendasItem"></div>
+      </div>
+
+      <div id="divApp" class="custom-checkbox form-item">
+        <div class="header-item" id="headerApp">
+          <span class="title">Aplicativos Indicados</span>
+          <div class="porcentual" id="porcenturalApp"><span id="valueApp">0 %</span> <i class="fa fa-light fa-arrow-down"></i></div>
+        </div>
+        <div id="appItem"></div>
+      </div>
+
+      <button id="button" class="button"><span>Ver Resultado</span></button>
+
+
+    </form>
+  </main>
+
+  <script src="scripts.js"></script>
+
+</body>
+
+</html>
