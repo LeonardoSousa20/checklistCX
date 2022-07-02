@@ -9,7 +9,11 @@ listaCategoria = [
 ];
 
 // Popula a lista de categorias no formulário (remove caracteres especiais, espaços e transforma em minúsculo)
-
+function range(start, end) {
+  return Array(end - start + 1)
+    .fill()
+    .map((_, idx) => start + idx);
+}
 for (let i = 0; i < listaCategoria.length; i++) {
   let element = listaCategoria[i];
   id = element
@@ -23,10 +27,12 @@ for (let i = 0; i < listaCategoria.length; i++) {
     check = $(
       '<p> <input type="checkbox"  id="' +
         element.replace(" ", "_") +
-        '" > ' +
+        '" value="categoria-' +
+        i +
+        '">' +
         '<label for="' +
         element.replace(" ", "_") +
-        '">' +
+        '" value="categoria-text">' +
         element +
         "</label>" +
         " </input> </p>"
@@ -548,14 +554,7 @@ $(document).on("click", "#button", function (e) {
   $("#resultado-container").slideDown();
   window.scrollTo(0, 0);
 
-  //Resetando
-
-  $("#desepenho-number").text(percentual + "%");
-  if (typeof porcenturalCategoria === Number) {
-    $("#total-categoria").text("0%");
-  } else {
-    $("#total-categoria").text(porcenturalCategoria + "%");
-  }
+  // Ajustando as msg de acordo com a porcentual
   if (percentual == 0) {
   } else if (percentual <= 25) {
     $("#desempenho-msg").html(
@@ -574,4 +573,50 @@ $(document).on("click", "#button", function (e) {
       "UAU! Sua loja está impecável!🏆Momento de apostar na divulgação e criar campanhas para receber novos visitantes e aumentar suas vendas!🤑"
     );
   }
+
+  // Ajustes porcentagens dos resultados
+
+  // % Geral
+  if (typeof percentual == "object") $("#desepenho-number").text("0%");
+  else {
+    $("#desepenho-number").text(percentual + "%");
+  }
+  // % Categoria
+  if (typeof porcenturalCategoria == "object") $("#total-categoria").text("0%");
+  else {
+    $("#total-categoria").text(porcenturalCategoria + "%");
+  }
+
+  // IDEIA PARA CRIAR AS CONTENT-ITEM AUTOMATICAMENTE, COLOCAR UM VALUE NA CATEGORIA E FAZER UM EACH NAS DIVS COM ESSE VALUE E PEGAR O TEXT DELAS E REZAR PARA QUE O JS COLOQUE NA ORDEM CORRETA.
+
+  function popCategoria() {
+    let labels = document.querySelectorAll("#categoriaItem>p>label");
+    let input = document.querySelectorAll("#categoriaItem>p>input");
+    let arrLabels = [];
+    let arrinput = [];
+    labels.forEach((el) => arrLabels.push(el.innerHTML));
+    input.forEach((el) => arrinput.push(el.checked));
+
+    var resultItem = document.querySelectorAll(
+      "#resultadoCategoria>.content>.content-item"
+    );
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrLabels[i];
+      check = $("<p class=>" + element + "</p>");
+      $(resultItem[i]).prepend(check);
+    }
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrinput[i];
+      let error = "fa fa-solid fa-circle-xmark";
+      if (element == false) {
+        check = $("<b class=error></b>");
+      } else {
+        check = $("<b class=sucess></b>");
+      }
+      $(resultItem[i]).prepend(check);
+    }
+  }
+  popCategoria();
 });

@@ -194,22 +194,36 @@ i {
 }
 .content-header {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 100px 250px 250px 250px 250px;
   font-size: 17px;
   font-weight: 600;
-  gap: 80px;
-  padding: 10px 30px;
+  gap: 70px;
   justify-items: center;
+  align-items: center;
 }
 .content-item {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 80px;
+  grid-template-columns: 100px 250px 250px 250px 250px;
+  gap: 70px;
   font-size: 14px;
   justify-items: center;
   align-items: center;
   margin-top: 30px;
   background: rgb(231, 229, 229);
-  padding: 20px 30px;
+
   border-radius: 10px;
+}
+.error::before {
+  font-family: "Font Awesome\ 5 Free";
+  content: "\f00d";
+  font-weight: 900;
+  font-size: 30px;
+  color: red;
+}
+.sucess::before {
+  font-family: "Font Awesome\ 5 Free";
+  content: "\f00c";
+  font-weight: 900;
+  font-size: 30px;
+  color: rgb(64, 197, 82);
 }
