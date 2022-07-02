@@ -473,26 +473,6 @@ $("#divApp").on("change", "input[type=checkbox]", function () {
   }
 });
 
-// Função para exibir a mensagem de acordo com o percentual
-$(document).on("click", "#button", function (e) {
-  e.preventDefault();
-  if (percentual == 0) {
-    alert("Selecione ao menos uma opção");
-  } else if (percentual <= 25) {
-    alert(
-      "Partiu reforma?! É isso mesmo, pare tudo que está fazendo e mãos a obra!"
-    );
-  } else if (percentual <= 50) {
-    alert(
-      "Que linda! 😍 Sim, sua loja está em processo de evolução e sabemos que quanto mais completa maior as chances de vender!"
-    );
-  } else if (percentual <= 75) {
-    alert("Uma loja quase perfeita!💙");
-  } else if (percentual >= 90) {
-    alert("UAU! Sua loja está impecável! 🏆");
-  }
-});
-
 // Manter Checkbox marcados em localstorage
 function setValue() {
   sList = [];
@@ -555,3 +535,43 @@ $("#confiabilidadeItem").hide();
 $("#layoutItem").hide();
 $("#vendasItem").hide();
 $("#appItem").hide();
+$("#resultado-container").hide();
+
+// PAGINA DE RESULTADO
+
+// Função para exibir a mensagem de acordo com o percentual
+$(document).on("click", "#button", function (e) {
+  e.preventDefault();
+
+  // Fazendo a troca de pages
+  $("main").slideUp();
+  $("#resultado-container").slideDown();
+  window.scrollTo(0, 0);
+
+  //Resetando
+
+  $("#desepenho-number").text(percentual + "%");
+  if (typeof porcenturalCategoria === Number) {
+    $("#total-categoria").text("0%");
+  } else {
+    $("#total-categoria").text(porcenturalCategoria + "%");
+  }
+  if (percentual == 0) {
+  } else if (percentual <= 25) {
+    $("#desempenho-msg").html(
+      "Partiu reforma?! É isso mesmo, pare tudo que está fazendo e mãos a obra!\nConfigure direitinho a sua loja e deixe ela nos trinques para receber seus clientes.😁\nSua missão é chegar em 50% de performance na configuração!📝"
+    );
+  } else if (percentual <= 50) {
+    $("#desempenho-msg").html(
+      "Que linda! 😍 \nSim, sua loja está em processo de evolução e sabemos que quanto mais completa maior as chances de vender!\nEntão, corra para alcançar 75% de performance na configuração e aproveite as vendas que virão⏳"
+    );
+  } else if (percentual <= 75) {
+    $("#desempenho-msg").html(
+      "Uma loja quase perfeita!💙 \n Ainda existe oportunidades de melhoria, mas até aqui você foi muito bem!Bora evoluir ainda mais esse performance de configuração?Depois disso é só aproveitar as vendas🤑"
+    );
+  } else if (percentual >= 90) {
+    $("#desempenho-msg").html(
+      "UAU! Sua loja está impecável!🏆Momento de apostar na divulgação e criar campanhas para receber novos visitantes e aumentar suas vendas!🤑"
+    );
+  }
+});
