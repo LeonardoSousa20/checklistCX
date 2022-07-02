@@ -194,7 +194,7 @@ i {
 }
 .content-header {
   display: grid;
-  grid-template-columns: 100px 250px 250px 250px 250px;
+  grid-template-columns: 100px 1fr 1fr 1fr 1fr;
   font-size: 17px;
   font-weight: 600;
   gap: 70px;
@@ -203,14 +203,14 @@ i {
 }
 .content-item {
   display: grid;
-  grid-template-columns: 100px 250px 250px 250px 250px;
+  grid-template-columns: 100px 1fr 1fr 1fr 1fr;
   gap: 70px;
   font-size: 14px;
   justify-items: center;
   align-items: center;
   margin-top: 30px;
   background: rgb(231, 229, 229);
-
+  text-align: center;
   border-radius: 10px;
 }
 .error::before {
