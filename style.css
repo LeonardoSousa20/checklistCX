@@ -6,6 +6,9 @@ body {
   background: #fff;
   color: #371e56;
 }
+a {
+  display: block;
+}
 
 /*FORM*/
 main {
@@ -194,24 +197,28 @@ i {
 }
 .content-header {
   display: grid;
-  grid-template-columns: 100px 1fr 1fr 1fr 1fr;
+  grid-template-columns: 70px 1fr 300px 400px 1fr;
   font-size: 17px;
   font-weight: 600;
-  gap: 70px;
+  gap: 50px;
   justify-items: center;
   align-items: center;
+  padding-right: 30px;
+  text-align: center;
 }
 .content-item {
   display: grid;
-  grid-template-columns: 100px 1fr 1fr 1fr 1fr;
-  gap: 70px;
-  font-size: 14px;
+  grid-template-columns: 70px 1fr 300px 400px 1fr;
+  gap: 50px;
+  font-size: 12px;
   justify-items: center;
   align-items: center;
   margin-top: 30px;
   background: rgb(231, 229, 229);
   text-align: center;
   border-radius: 10px;
+  padding-right: 30px;
+  line-height: 1.5;
 }
 .error::before {
   font-family: "Font Awesome\ 5 Free";
@@ -226,4 +233,7 @@ i {
   font-weight: 900;
   font-size: 30px;
   color: rgb(64, 197, 82);
+}
+.modulo {
+  margin-top: 50px;
 }

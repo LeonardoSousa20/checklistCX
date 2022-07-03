@@ -330,14 +330,16 @@ $(document).on("change", "input[type=checkbox]", function () {
   }
 });
 
-// Função para calcular o percentual de acordo com a quantidade de checkbox marcados de Produtos
+// Função para calcular o percentual de acordo com a quantidade de checkbox marcados de Categorias
 
 $("#divCategoria").on("change", "input[type=checkbox]", function () {
   total_geral = $("#divCategoria").find(":input");
   total_selecionado = $("#divCategoria").find(":input:checked");
   text_total_geral = total_geral.length;
   text_total_selecionado = total_selecionado.length;
-  porcenturalCategoria = (text_total_selecionado * 100) / text_total_geral;
+  porcenturalCategoria = Math.trunc(
+    (text_total_selecionado * 100) / text_total_geral
+  );
 
   if (porcenturalCategoria != 0) {
     $("#valueCategoria").text(porcenturalCategoria + "%");
@@ -586,6 +588,14 @@ $(document).on("click", "#button", function (e) {
   else {
     $("#total-categoria").text(porcenturalCategoria + "%");
   }
+  if (typeof porcenturalProduto == "object") $("#total-produto").text("0%");
+  else {
+    $("#total-produto").text(porcenturalProduto + "%");
+  }
+  if (typeof porcenturalBanner == "object") $("#total-banner").text("0%");
+  else {
+    $("#total-banner").text(porcenturalBanner + "%");
+  }
 
   // IDEIA PARA CRIAR AS CONTENT-ITEM AUTOMATICAMENTE, COLOCAR UM VALUE NA CATEGORIA E FAZER UM EACH NAS DIVS COM ESSE VALUE E PEGAR O TEXT DELAS E REZAR PARA QUE O JS COLOQUE NA ORDEM CORRETA.
 
@@ -619,4 +629,35 @@ $(document).on("click", "#button", function (e) {
     }
   }
   popCategoria();
+
+  function popProduto() {
+    let labels = document.querySelectorAll("#produtoItem>p>label");
+    let input = document.querySelectorAll("#produtoItem>p>input");
+    let arrLabels = [];
+    let arrinput = [];
+    labels.forEach((el) => arrLabels.push(el.innerHTML));
+    input.forEach((el) => arrinput.push(el.checked));
+
+    var resultItem = document.querySelectorAll(
+      "#resultadoProduto>.content>.content-item"
+    );
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrLabels[i];
+      check = $("<p class=>" + element + "</p>");
+      $(resultItem[i]).prepend(check);
+    }
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrinput[i];
+      let error = "fa fa-solid fa-circle-xmark";
+      if (element == false) {
+        check = $("<b class=error></b>");
+      } else {
+        check = $("<b class=sucess></b>");
+      }
+      $(resultItem[i]).prepend(check);
+    }
+  }
+  popProduto();
 });
