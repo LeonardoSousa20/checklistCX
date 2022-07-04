@@ -240,3 +240,6 @@ i {
 .app {
   grid-template-columns: 70px 1fr 1fr 1fr;
 }
+.resultado-container {
+  margin-bottom: 50px;
+}
