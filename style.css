@@ -15,7 +15,7 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  background: url(/img/bg.webp) no-repeat #fff;
+  background: url(./img/bg.webp) no-repeat #fff;
   background-size: cover;
 }
 
