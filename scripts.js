@@ -544,6 +544,7 @@ $("#layoutItem").hide();
 $("#vendasItem").hide();
 $("#appItem").hide();
 $("#resultado-container").hide();
+$("#footer").hide();
 
 // PAGINA DE RESULTADO
 
@@ -595,6 +596,27 @@ $(document).on("click", "#button", function (e) {
   if (typeof porcenturalBanner == "object") $("#total-banner").text("0%");
   else {
     $("#total-banner").text(porcenturalBanner + "%");
+  }
+  if (typeof porcenturalFrete == "object") $("#total-frete").text("0%");
+  else {
+    $("#total-frete").text(porcenturalFrete + "%");
+  }
+  if (typeof porcenturalConfiabilidade == "object")
+    $("#total-confiabilidade").text("0%");
+  else {
+    $("#total-confiabilidade").text(porcenturalConfiabilidade + "%");
+  }
+  if (typeof porcenturalLayout == "object") $("#total-layout").text("0%");
+  else {
+    $("#total-layout").text(porcenturalLayout + "%");
+  }
+  if (typeof porcenturalVendas == "object") $("#total-vendas").text("0%");
+  else {
+    $("#total-vendas").text(porcenturalVendas + "%");
+  }
+  if (typeof porcenturalApp == "object") $("#total-app").text("0%");
+  else {
+    $("#total-app").text(porcenturalApp + "%");
   }
 
   // IDEIA PARA CRIAR AS CONTENT-ITEM AUTOMATICAMENTE, COLOCAR UM VALUE NA CATEGORIA E FAZER UM EACH NAS DIVS COM ESSE VALUE E PEGAR O TEXT DELAS E REZAR PARA QUE O JS COLOQUE NA ORDEM CORRETA.
@@ -660,4 +682,190 @@ $(document).on("click", "#button", function (e) {
     }
   }
   popProduto();
+
+  function popBanner() {
+    let labels = document.querySelectorAll("#bannerItem>p>label");
+    let input = document.querySelectorAll("#bannerItem>p>input");
+    let arrLabels = [];
+    let arrinput = [];
+    labels.forEach((el) => arrLabels.push(el.innerHTML));
+    input.forEach((el) => arrinput.push(el.checked));
+
+    var resultItem = document.querySelectorAll(
+      "#resultadoBanner>.content>.content-item"
+    );
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrLabels[i];
+      check = $("<p class=>" + element + "</p>");
+      $(resultItem[i]).prepend(check);
+    }
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrinput[i];
+      let error = "fa fa-solid fa-circle-xmark";
+      if (element == false) {
+        check = $("<b class=error></b>");
+      } else {
+        check = $("<b class=sucess></b>");
+      }
+      $(resultItem[i]).prepend(check);
+    }
+  }
+  popBanner();
+
+  function popFrete() {
+    let labels = document.querySelectorAll("#freteItem>p>label");
+    let input = document.querySelectorAll("#freteItem>p>input");
+    let arrLabels = [];
+    let arrinput = [];
+    labels.forEach((el) => arrLabels.push(el.innerHTML));
+    input.forEach((el) => arrinput.push(el.checked));
+
+    var resultItem = document.querySelectorAll(
+      "#resultadoFrete>.content>.content-item"
+    );
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrLabels[i];
+      check = $("<p class=>" + element + "</p>");
+      $(resultItem[i]).prepend(check);
+    }
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrinput[i];
+      let error = "fa fa-solid fa-circle-xmark";
+      if (element == false) {
+        check = $("<b class=error></b>");
+      } else {
+        check = $("<b class=sucess></b>");
+      }
+      $(resultItem[i]).prepend(check);
+    }
+  }
+  popFrete();
+
+  function popConfiabilidade() {
+    let labels = document.querySelectorAll("#confiabilidadeItem>p>label");
+    let input = document.querySelectorAll("#confiabilidadeItem>p>input");
+    let arrLabels = [];
+    let arrinput = [];
+    labels.forEach((el) => arrLabels.push(el.innerHTML));
+    input.forEach((el) => arrinput.push(el.checked));
+
+    var resultItem = document.querySelectorAll(
+      "#resultadoConfiabilidade>.content>.content-item"
+    );
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrLabels[i];
+      check = $("<p class=>" + element + "</p>");
+      $(resultItem[i]).prepend(check);
+    }
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrinput[i];
+      let error = "fa fa-solid fa-circle-xmark";
+      if (element == false) {
+        check = $("<b class=error></b>");
+      } else {
+        check = $("<b class=sucess></b>");
+      }
+      $(resultItem[i]).prepend(check);
+    }
+  }
+  popConfiabilidade();
+
+  function popLayout() {
+    let labels = document.querySelectorAll("#layoutItem>p>label");
+    let input = document.querySelectorAll("#layoutItem>p>input");
+    let arrLabels = [];
+    let arrinput = [];
+    labels.forEach((el) => arrLabels.push(el.innerHTML));
+    input.forEach((el) => arrinput.push(el.checked));
+
+    var resultItem = document.querySelectorAll(
+      "#resultadoLayout>.content>.content-item"
+    );
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrLabels[i];
+      check = $("<p class=>" + element + "</p>");
+      $(resultItem[i]).prepend(check);
+    }
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrinput[i];
+      let error = "fa fa-solid fa-circle-xmark";
+      if (element == false) {
+        check = $("<b class=error></b>");
+      } else {
+        check = $("<b class=sucess></b>");
+      }
+      $(resultItem[i]).prepend(check);
+    }
+  }
+  popLayout();
+
+  function popVendas() {
+    let labels = document.querySelectorAll("#vendasItem>p>label");
+    let input = document.querySelectorAll("#vendasItem>p>input");
+    let arrLabels = [];
+    let arrinput = [];
+    labels.forEach((el) => arrLabels.push(el.innerHTML));
+    input.forEach((el) => arrinput.push(el.checked));
+
+    var resultItem = document.querySelectorAll(
+      "#resultadoVendas>.content>.content-item"
+    );
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrLabels[i];
+      check = $("<p class=>" + element + "</p>");
+      $(resultItem[i]).prepend(check);
+    }
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrinput[i];
+      let error = "fa fa-solid fa-circle-xmark";
+      if (element == false) {
+        check = $("<b class=error></b>");
+      } else {
+        check = $("<b class=sucess></b>");
+      }
+      $(resultItem[i]).prepend(check);
+    }
+  }
+  popVendas();
+
+  function popApp() {
+    let labels = document.querySelectorAll("#appItem>p>label");
+    let input = document.querySelectorAll("#appItem>p>input");
+    let arrLabels = [];
+    let arrinput = [];
+    labels.forEach((el) => arrLabels.push(el.innerHTML));
+    input.forEach((el) => arrinput.push(el.checked));
+
+    var resultItem = document.querySelectorAll(
+      "#resultadoApp>.content>.content-item"
+    );
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrLabels[i];
+      check = $("<p class=>" + element + "</p>");
+      $(resultItem[i]).prepend(check);
+    }
+
+    for (let i = 0; i < resultItem.length; i++) {
+      let element = arrinput[i];
+      let error = "fa fa-solid fa-circle-xmark";
+      if (element == false) {
+        check = $("<b class=error></b>");
+      } else {
+        check = $("<b class=sucess></b>");
+      }
+      $(resultItem[i]).prepend(check);
+    }
+  }
+  popApp();
 });

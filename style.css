@@ -237,3 +237,6 @@ i {
 .modulo {
   margin-top: 50px;
 }
+.app {
+  grid-template-columns: 70px 1fr 1fr 1fr;
+}
