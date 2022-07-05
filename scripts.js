@@ -26,13 +26,13 @@ for (let i = 0; i < listaCategoria.length; i++) {
   if (id) {
     check = $(
       '<p> <input type="checkbox"  id="' +
-        element.replace(" ", "_") +
-        '" value="categoria-' +
+        "categoria-" +
         i +
         '">' +
         '<label for="' +
-        element.replace(" ", "_") +
-        '" value="categoria-text">' +
+        "categoria-" +
+        i +
+        '">' +
         element +
         "</label>" +
         " </input> </p>"
@@ -74,11 +74,13 @@ for (let i = 0; i < listaProdutos.length; i++) {
     : null;
   if (id) {
     check = $(
-      '<p> <input type="checkbox" id="' +
-        element.replace(" ", "_") +
-        '"> ' +
+      '<p> <input type="checkbox"  id="' +
+        "produto-" +
+        i +
+        '">' +
         '<label for="' +
-        element.replace(" ", "_") +
+        "produto-" +
+        i +
         '">' +
         element +
         "</label>" +
@@ -108,11 +110,13 @@ for (let i = 0; i < listaBanners.length; i++) {
     : null;
   if (id) {
     check = $(
-      '<p> <input type="checkbox" id="' +
-        element.replace(" ", "_") +
-        '" > ' +
+      '<p> <input type="checkbox"  id="' +
+        "banner-" +
+        i +
+        '">' +
         '<label for="' +
-        element.replace(" ", "_") +
+        "banner-" +
+        i +
         '">' +
         element +
         "</label>" +
@@ -145,11 +149,13 @@ for (let i = 0; i < listaFrete.length; i++) {
     : null;
   if (id) {
     check = $(
-      '<p> <input type="checkbox" id="' +
-        element.replace(" ", "_") +
-        '" "> ' +
+      '<p> <input type="checkbox"  id="' +
+        "frete-" +
+        i +
+        '">' +
         '<label for="' +
-        element.replace(" ", "_") +
+        "frete-" +
+        i +
         '">' +
         element +
         "</label>" +
@@ -187,11 +193,13 @@ for (let i = 0; i < listaConfiabilidade.length; i++) {
     : null;
   if (id) {
     check = $(
-      '<p> <input type="checkbox" id="' +
-        element.replace(" ", "_") +
-        '"> ' +
+      '<p> <input type="checkbox"  id="' +
+        "conf-" +
+        i +
+        '">' +
         '<label for="' +
-        element.replace(" ", "_") +
+        "conf-" +
+        i +
         '">' +
         element +
         "</label>" +
@@ -223,11 +231,13 @@ for (let i = 0; i < listaLayout.length; i++) {
     : null;
   if (id) {
     check = $(
-      '<p> <input type="checkbox" id="' +
-        element.replace(" ", "_") +
-        '"> ' +
+      '<p> <input type="checkbox"  id="' +
+        "layout-" +
+        i +
+        '">' +
         '<label for="' +
-        element.replace(" ", "_") +
+        "layout-" +
+        i +
         '">' +
         element +
         "</label>" +
@@ -264,16 +274,19 @@ for (let i = 0; i < listaVendas.length; i++) {
     : null;
   if (id) {
     check = $(
-      '<p> <input type="checkbox" id="' +
-        element.replace(" ", "_") +
-        '"> ' +
+      '<p> <input type="checkbox"  id="' +
+        "venda-" +
+        i +
+        '">' +
         '<label for="' +
-        element.replace(" ", "_") +
+        "venda-" +
+        i +
         '">' +
         element +
         "</label>" +
         " </input> </p>"
     );
+
     $("#vendasItem").append(check);
   }
 }
@@ -301,11 +314,13 @@ for (let i = 0; i < listaApps.length; i++) {
     : null;
   if (id) {
     check = $(
-      '<p> <input type="checkbox" id="' +
-        element.replace(" ", "_") +
-        '"> ' +
+      '<p> <input type="checkbox"  id="' +
+        "app-" +
+        i +
+        '">' +
         '<label for="' +
-        element.replace(" ", "_") +
+        "app-" +
+        i +
         '">' +
         element +
         "</label>" +
@@ -482,22 +497,57 @@ $("#divApp").on("change", "input[type=checkbox]", function () {
 });
 
 // Manter Checkbox marcados em localstorage
-function setValue() {
-  sList = [];
-  sCheck = [];
-  $("input[type=checkbox]").each(function () {
-    sList = "";
-    sCheck = "";
-    sList = $(this).attr("id");
-    sCheck = this.checked ? "1" : "0";
-    localStorage.setItem(sList, sCheck);
-  });
-}
+// function setValue() {
+//   sList = [];
+//   sCheck = [];
+
+//   $("input[type=checkbox]").each(function () {
+//     sList = "";
+//     sCheck = "";
+//     sList = $("input[type=checkbox]").attr("id");
+//     sCheck = this.checked ? "1" : "0";
+//     //localStorage.setItem("check", arr);
+//   });
+// }
 
 // Função para cada checkbox marcado, salvar em localstorage
 $("input[type=checkbox]").click(function () {
-  setValue();
+  id = [];
+  check = [];
+  let input = document.querySelectorAll("input");
+  input.forEach((el) => id.push(el.id));
+  input.forEach((el) => check.push(el.checked));
+  function convertToObj(id, check) {
+    if (id.length != check.length || id.length == 0 || check.length == 0) {
+      return null;
+    }
+    let obj = {};
+
+    // Using the foreach method
+    id.forEach((k, i) => {
+      obj[k] = check[i];
+    });
+    return obj;
+  }
+  json = JSON.stringify(convertToObj(id, check));
+  console.log(json);
+  localStorage.setItem("CheckMarcado", json);
 });
+
+// Funcção para obter checkbox marcados no local host
+function getLocal() {
+  let checkLocal = JSON.parse(localStorage.getItem("CheckMarcado"));
+  let input = document.querySelectorAll("input");
+  teste = [];
+  let check = input.forEach((el) => console.log(el.id));
+
+  $.each(checkLocal, function (index, value) {
+    if (index == check) {
+      $(input).prop("checked", true);
+    }
+  });
+}
+getLocal();
 
 // Animações
 $("#headerCategoria").click(function () {
@@ -544,7 +594,6 @@ $("#layoutItem").hide();
 $("#vendasItem").hide();
 $("#appItem").hide();
 $("#resultado-container").hide();
-$("#footer").hide();
 
 // PAGINA DE RESULTADO
 
