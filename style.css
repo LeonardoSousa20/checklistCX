@@ -17,6 +17,7 @@ main {
   justify-items: center;
   background: url(./img/bg.webp) no-repeat #fff;
   background-size: cover;
+  height: 100vh;
 }
 .form {
   margin-bottom: 50px;
